@@ -1,0 +1,20 @@
+<div class="container-home row">
+    <div class="sidebar col-2">
+        <app-navegar-por-ventanas class="sidebar" [page]="page"></app-navegar-por-ventanas>
+    </div>
+    <div class="contenido col-10">
+        <div id="main-navbar" class="navbar">
+            <div class="perfil">
+                <img width="40px" class="rounded-circle" src="assets/perfil.webp">
+                <p>Administrador</p>
+            </div>
+        </div>
+        <div class="container">
+            <!-- <app-alumno-crud *ngIf="page.includes('/listaAlumnos')"></app-alumno-crud>
+            <app-usuarios-crud *ngIf="page.includes('/listaUsuarios')"></app-usuarios-crud>
+            <app-actividades-crud *ngIf="page.includes('/listaActividades')"></app-actividades-crud>
+            <app-tipos-menu-crud *ngIf="page.includes('/listaTiposMenu')"></app-tipos-menu-crud>
+            <app-asistencias-crud *ngIf="page.includes('/listaAsistencias')"></app-asistencias-crud> -->
+        </div>
+    </div>
+</div>
