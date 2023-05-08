@@ -1,0 +1,85 @@
+<div class="row mt-3">
+    <div class="col row">
+      <h1>{{title}}</h1>
+  
+  
+      <div class="container-opciones col row">
+        <input class="col-5 buscar" type="search" ngModel="filter" placeholder="Buscar..." />
+  
+      </div>
+  
+
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" width="10">
+  
+                <input type="checkbox" ngModel="isSelectAll"/>
+                 <!-- <input type="checkbox" *ngIf="visualModes.defaultMode == '' || visualModes.selectMultipleMode == ''"
+                  [(ngModel)]="isSelectAll" (click)="selectAll()" />-->
+              </th>
+              <th scope="col" width="100" sortableUsuario="name">
+                Nombre
+              </th>
+              <th scope="col" sortableUsuario="apellidos" width="100">
+                Apellidos
+              </th>
+              <th scope="col" sortableUsuario="nifcif" class="text-center"
+                width="100">
+                NIF/CIF
+              </th>
+              <th  scope="col" sortableUsuario="fecha_nacimiento" class="text-center"
+                width="150">
+                Fecha de nacimiento
+              </th>
+              <th scope="col" sortableUsuario="mobil" class="text-center" width="150">
+                Numero de teléfono
+              </th>
+              <th  scope="col" sortableUsuario="email" class="text-center"
+                width="150">
+                Email
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="
+                let usuario of usuarios | usuarioPipe : filter
+              ">
+              <td>
+                <input type="checkbox" ngModel="usuarios.select" />
+              </td>
+              <td (click)="openOptionsForm(usuario)">
+                {{ usuario.name }}
+              </td>
+              <td (click)="openOptionsForm(usuario)">
+                {{ usuario.apellido }}
+              </td>
+              <td  (click)="openOptionsForm(usuario)" class="text-center">
+                {{ usuario.nif }}
+              </td>
+              <td  (click)="openOptionsForm(usuario)" class="text-center">
+                {{ usuario.direccion }}
+              </td>
+              <td (click)="openOptionsForm(usuario)" class="text-center">
+                {{ usuario.poblacion }} / Fijo: {{ usuario.telefono }}
+              </td>
+              <td  (click)="openOptionsForm(usuario)" class="text-center">
+                {{ usuario.provincia }}
+              </td>
+              <td  (click)="openOptionsForm(usuario)" class="text-center">
+                {{ usuario.cuenta_bancaria }}
+              </td>
+              <td  (click)="openOptionsForm(usuario)" class="text-center">
+                {{ usuario.telefono }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #content let-modal>
+    <!--<usuarios-form (closePopupEvent)="closePopup()" [usuarioIndex]="usuarioIndex"></usuarios-form>-->
+  </ng-template>
