@@ -10,8 +10,8 @@ import { take, timeoutWith } from 'rxjs/operators';
 })
 export class UsuariosControlador {
     
-  constructor(
-    private actividadService: BaseService){}
+  constructor(private actividadService: BaseService){}
+  
   getUsuarios(): any {
     console.log("data")
     return new Promise<Usuario[]>((resolve) => {

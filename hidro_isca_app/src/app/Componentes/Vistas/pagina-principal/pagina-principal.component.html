@@ -1,0 +1,21 @@
+<div>
+    <div class="nav">
+        <div>
+            <img width="40px" class="rounded-circle" src="assets/perfil.webp">
+            <p>Jose Andrés</p>
+        </div>
+
+    </div>
+    <div class="sidebar">
+        <app-navegar-por-ventanas class="sidebar" [page]="page"></app-navegar-por-ventanas>
+    </div>
+    <div class="content">
+        <div>
+            <app-usuarios-lista *ngIf="page.includes('/listaUsuarios')"></app-usuarios-lista>
+            <!-- <app-usuarios-crud *ngIf="page.includes('/listaUsuarios')"></app-usuarios-crud>
+            <app-actividades-crud *ngIf="page.includes('/listaActividades')"></app-actividades-crud>
+            <app-tipos-menu-crud *ngIf="page.includes('/listaTiposMenu')"></app-tipos-menu-crud>
+            <app-asistencias-admin-crud *ngIf="page.includes('/listaAsistencias')"></app-asistencias-admin-crud> -->
+        </div>
+    </div>
+</div>

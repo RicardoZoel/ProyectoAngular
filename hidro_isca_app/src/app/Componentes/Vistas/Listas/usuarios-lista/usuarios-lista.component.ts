@@ -10,8 +10,7 @@ import { Usuario } from 'src/app/Modelos/Usuario';
 export class UsuariosListaComponent {
 
   usuarios:Usuario[]=[];
-  constructor(
-    private usuControlador: UsuariosControlador) { }
+  constructor(private usuControlador: UsuariosControlador) { }
   filter: string = ''; // var encargada de guardar el filtrado por carácteres
   //
   @Input() title = 'Usuarios';

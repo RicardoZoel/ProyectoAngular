@@ -1,0 +1,94 @@
+
+.logo{
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    }
+    .logo img{
+      width: 100%;
+    }
+    
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 200px;
+      background: rgb(246, 99, 1) !important;
+      background-color: rgb(246, 99, 1);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.176);
+      transition: .5s;
+    }
+    .interior{
+      height: 100%;
+    }
+    
+    .list-option {
+      padding: 10px;
+      color: white;
+      transition: .5s;
+      font-size: 18px;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+    
+    .list-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .list-option fa-icon {
+      margin-left: 10px;
+    }
+    
+    
+    .list-option:hover {
+      transform: scale(1.05);
+      transition: .5s;
+      color: rgb(246, 99, 1);
+      background-color: white;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+    .sidebar-1{
+      height: 90%;
+    }
+    .sidebar-2{
+      height: 10%;
+    }
+    
+    @media screen and (max-width: 1100px) {
+      .sidebar {
+        width: 50px;
+        padding: 0px;
+      }
+      .list-option {
+        font-size: 14px;
+        padding: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        justify-content: center;
+        border-radius: 0px; 
+        color: rgb(255, 255, 255);
+        background-color: rgba(0, 0, 0, 0);
+      }
+      .list-option:hover {
+        transform: scale(1.05);
+        transition: .5s;
+        color: rgb(255, 255, 255);
+        background-color: rgba(0, 0, 0, 0);
+      }
+      .list-option fa-icon{
+        margin-left: 0px;
+      }
+      span{
+        display: none;
+        visibility: hidden;
+      }
+    }
+    
+    
+    

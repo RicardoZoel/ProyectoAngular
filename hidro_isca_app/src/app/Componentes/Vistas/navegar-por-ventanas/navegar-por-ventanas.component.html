@@ -1,0 +1,27 @@
+<nav *ngIf="!isPlegado" id="sidebarMenu" class="sidebar">
+    <div class="interior position-sticky">    
+        <div class="sidebar-1 list-group list-group-flush mx-3 mt-4">
+            <a routerLink="/listaAlumnos" ngClass="{active: isListaIntegrantes}" class="list-option">
+                <span>Alumnos</span> <fa-icon [icon]="faChildren"></fa-icon>
+            </a>
+            <a routerLink="/listaUsuarios" ngClass="{active: isListaEjercicios}" class="list-option">
+                <span>Usuarios</span><fa-icon [icon]="faClipboardUser" />
+            </a>
+            <a routerLink="/listaActividades" ngClass="{active: isListaAsignaciones}" class="list-option">
+                <span>Actividades</span> <fa-icon [icon]="faBaseballBatBall"></fa-icon>
+            </a>
+            <a routerLink="/listaAsistencias" ngClass="{active: isListaFamilias}" class="list-option">
+                <span>Asistencias</span> <fa-icon [icon]="faballotcheck"></fa-icon>
+            </a>
+            <a routerLink="/listaTiposMenu" ngClass="{active: isListaFamilias}" class="list-option">
+                <span>Tipos de menu</span> <fa-icon [icon]="faUtensils"></fa-icon>
+            </a>
+        
+        </div>
+        <div  class="sidebar-1 list-group list-group-flush mx-3 mt-4 bottom-0">
+            <a (click)="logOut()" ngClass="{active: isListaFamilias}" class="list-option last">
+                <span>Cerrar sesion</span> <fa-icon [icon]="faPowerOff"></fa-icon>
+            </a>
+        </div>
+    </div>
+</nav>
