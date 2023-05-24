@@ -27,6 +27,8 @@ import {
   faPersonCircleXmark,
   faBars,
   faPowerOff,
+  faMobile,
+  faGauge,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -41,19 +43,11 @@ export class NavegarPorVentanasComponent {
 
   //BOOLEAN PAGE
   isHome = false;
-  isListaCargos = false;
+  isHidro_isca=false;
   isListaUsuarios = false;
-  isListaEjercicios = false;
-  isListaFamilias = false;
-  isListaRecibos = false;
-  isListaQuotas = false;
-  isListaBajas = false;
-  isListaCategorias = false;
-  isListaConceptos = false;
-  isAddDatos = false;
-  isListaTipoPagos = false;
-  isListaAsignaciones = false;
-
+  isListaContadores=false;
+  isListaConsumos=false;
+  isListaRecivo=false;
   //ICONOS
   faPowerOff = faPowerOff;
   faHome = faHome;
@@ -76,7 +70,10 @@ export class NavegarPorVentanasComponent {
   faChildren = faChildren;
   faUtensils = faUtensils;
   faBars = faBars;
-
+  faMobile=faMobile
+  faRecivo=faReceipt;
+  faGastar=faGauge;
+  
   constructor() {
     setTimeout(() => this.whichPageIs(), 300);
   }
@@ -87,19 +84,11 @@ export class NavegarPorVentanasComponent {
 
   whichPageIs(): void {
     this.isHome = this.page === '';
-    this.isListaCargos = this.page.includes('/listaCargos');
+    this.isHidro_isca = this.page.includes('/vistaEmpresa');
     this.isListaUsuarios = this.page.includes('/listaUsuarios');
-    this.isListaEjercicios =
-      this.page.includes('/listaEjercicios') ||
-      this.page.includes('/CargosEjercicios');
-    this.isListaFamilias = this.page.includes('/listaFamilias');
-    this.isListaRecibos = this.page.includes('/listaRecibos');
-    this.isListaConceptos = this.page.includes('/listaConceptos');
-    this.isListaTipoPagos = this.page.includes('/listaTipoPagos');
-    this.isListaBajas = this.page.includes('/listaBajas');
-    this.isListaQuotas = this.page.includes('/listaQuotas');
-    this.isListaAsignaciones = this.page.includes('/listaAsignaciones');
-    this.isAddDatos = this.page.includes('/addDatos');
+    this.isListaContadores = this.page.includes('/listaContadores');
+    this.isListaConsumos = this.page.includes('/listaConsumos');
+    this.isListaRecivo = this.page.includes('/listaRecivo');
   }
 
   logOut(): void {

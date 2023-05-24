@@ -1,0 +1,43 @@
+<div class="container" *ngIf="estaPorEncima && !vistas.soloVer">
+    <div class="container-select row">
+        <div class="col-10 p-0">
+            <input (click)="abrirLista()" (keyup)="actualizar($event)" type="text" class="form-control"
+                placeholder="Buscar...">
+        </div>
+        <div class="col-2"> <button (click)="enviarObjeto({id:0})" type="button"
+                class="btn btn-danger text-center">X</button>
+        </div>
+
+    </div>
+    <div *ngIf="vistas.listaAbierta" class="container-lista col-10">
+        <ul class="lista p-0">
+            <li (click)="enviarObjeto(objeto)" *ngFor="let objeto of objetos">{{objeto.name}}</li>
+        </ul>
+    </div>
+
+</div>
+<div class="container2" *ngIf="!estaPorEncima && !vistas.soloVer">
+    <div class="container-select row">
+        <div class="col-10"><input (click)="abrirLista()" (keyup)="actualizar($event)" type="text"
+                class="form-control" placeholder="Buscar..."></div>
+        <div class="col-2"> <button (click)="enviarObjeto({id:0})" type="button" class="btn btn-danger text-center">X
+            </button>
+        </div>
+    </div>
+    <div *ngIf="vistas.listaAbierta" class="container-lista row col-10 p-3 pt-0">
+        <ul class="lista p-0">
+            <li (click)="enviarObjeto(objeto)" *ngFor="let objeto of objetos">{{objeto.name}}</li>
+        </ul>
+    </div>
+
+</div>
+<div *ngIf="vistas.soloVer" class="container">
+    <div class="container-select row">
+        <div class="col-10 p-0"> <input readonly [(ngModel)]="objetoSeleccionado.name" type="text"
+                class="form-control ">
+        </div>
+        <div class="col-2">
+            <button (click)="cambiarAEditar()" type="button" class="btn btn-danger text-center">X</button>
+        </div>
+    </div>
+</div>

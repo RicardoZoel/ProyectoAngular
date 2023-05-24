@@ -1,0 +1,45 @@
+.container {
+    height: 50px;
+
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    list-style: none;
+}
+
+
+.lista {
+    font-size: large;
+    background-color: white;
+    overflow-y: auto;
+    max-height: 200px;
+    /* Ajusta esta altura según tus necesidades */
+    border: 1px solid #ccc;
+    /* Opcional: Agrega un borde para mayor claridad */
+    padding: 10px;
+    /* Opcional: Agrega un relleno para mayor claridad */
+}
+
+
+li:hover {
+    background-color: rgb(1, 165, 246);
+}
+
+
+@media screen and (max-width:900px) {
+    .lista {
+        background-color: white;
+        overflow-y: auto;
+        max-height: 100px;
+        /* Ajusta esta altura según tus necesidades */
+        border: 1px solid #ccc;
+        /* Opcional: Agrega un borde para mayor claridad */
+        padding: 10px;
+        /* Opcional: Agrega un relleno para mayor claridad */
+    }
+
+}

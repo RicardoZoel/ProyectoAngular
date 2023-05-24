@@ -4,22 +4,24 @@ import { BaseService } from '../Servicios/base.service';
 
 import { timer } from 'rxjs';
 import { take, timeoutWith } from 'rxjs/operators';
+import { Empresa } from '../Modelos/Emresa';
+import { Agua } from '../Modelos/Agua';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UsuariosControlador {
-  getUsuario(arg0: any) {
-    return new Promise<Usuario>((resolve) => {
+export class EmpresaControlador {
+  editarAgua(editableAgua: Agua) { 
+    return new Promise<boolean>((resolve) => {
       this.baseService
-        .get('getUsuario/'+arg0)
+        .put('putAgua/',editableAgua)
         .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
         .subscribe(
           (data: any) => {
          
             if (data['error'] == undefined) {
-              console.log(data['data'])
-              resolve(data['data']);
+              console.log(data)
+              resolve(true);
             }
           },
           (error: any) => {
@@ -28,12 +30,12 @@ export class UsuariosControlador {
           }
         );
     });
-
+  
   }
-  putUsuario(selected_usuario: Usuario) {
+  editarEmpresa(editableEmpresa: Empresa) {
     return new Promise<boolean>((resolve) => {
       this.baseService
-        .put('putUsuario/'+selected_usuario.id,selected_usuario)
+        .put('putEmpresa/',editableEmpresa)
         .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
         .subscribe(
           (data: any) => {
@@ -50,19 +52,21 @@ export class UsuariosControlador {
           }
         );
     });
+  
   }
-  postUsuario(usuario:Usuario) {
-    return new Promise<boolean>((resolve) => {
+constructor(private baseService: BaseService){}
+getEmpresa(): any {
+    console.log("data")
+    return new Promise<Empresa>((resolve) => {
         this.baseService
-          .post('postUsuario',usuario)
+          .get('getEmpresa')
           .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
           .subscribe(
             (data: any) => {
            
               if (data['error'] == undefined) {
-                console.log(data)
                 console.log(data['data'])
-                resolve(true);
+                resolve(data['data'][0]);
               }
             },
             (error: any) => {
@@ -72,21 +76,18 @@ export class UsuariosControlador {
           );
       });
   }
-    
-  constructor(private baseService: BaseService){}
-  
-  getUsuarios(): any {
+  getAgua(): any {
     console.log("data")
-    return new Promise<Usuario[]>((resolve) => {
+    return new Promise<Agua>((resolve) => {
         this.baseService
-          .get('getUsuario')
+          .get('getAgua')
           .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
           .subscribe(
             (data: any) => {
            
               if (data['error'] == undefined) {
                 console.log(data['data'])
-                resolve(data['data']);
+                resolve(data['data'][0]);
               }
             },
             (error: any) => {

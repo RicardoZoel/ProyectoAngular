@@ -1,20 +1,21 @@
 <div>
     <div class="nav">
-        <div>
+        <div class="perfil">
             <img width="40px" class="rounded-circle" src="assets/perfil.webp">
-            <p>Jose Andrés</p>
+            <p>Administrador</p>
         </div>
-
     </div>
     <div class="sidebar">
         <app-navegar-por-ventanas class="sidebar" [page]="page"></app-navegar-por-ventanas>
     </div>
     <div class="content">
         <div>
+            <app-vista-empresa *ngIf="page.includes('/vistaEmpresa')"></app-vista-empresa>
             <app-usuarios-lista *ngIf="page.includes('/listaUsuarios')"></app-usuarios-lista>
-            <!-- <app-usuarios-crud *ngIf="page.includes('/listaUsuarios')"></app-usuarios-crud>
-            <app-actividades-crud *ngIf="page.includes('/listaActividades')"></app-actividades-crud>
-            <app-tipos-menu-crud *ngIf="page.includes('/listaTiposMenu')"></app-tipos-menu-crud>
+            <app-contadores-lista *ngIf="page.includes('/listaContadores')"></app-contadores-lista>
+            <app-consumos-lista *ngIf="page.includes('/listaConsumos')"></app-consumos-lista>
+            <app-recivos-lista *ngIf="page.includes('/listaRecivos')"></app-recivos-lista>
+            <!-- <app-tipos-menu-crud *ngIf="page.includes('/listaTiposMenu')"></app-tipos-menu-crud>
             <app-asistencias-admin-crud *ngIf="page.includes('/listaAsistencias')"></app-asistencias-admin-crud> -->
         </div>
     </div>

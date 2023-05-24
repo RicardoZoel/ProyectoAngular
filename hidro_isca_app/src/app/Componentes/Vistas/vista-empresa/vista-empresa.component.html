@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+      <h1 class="col-2">Empresa</h1>
+      <div></div>
+      <div class="col-2"><label>Nombre:</label></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="editableEmpresa.name"></div>
+      <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="editableEmpresa.name"></div>
+      <div></div>
+  
+      <div class="col-2"><label>Dirección:</label></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="editableEmpresa.direccion"></div>
+      <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="editableEmpresa.direccion"></div>
+  
+      <div class="col-2"><label>Población:</label></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="editableEmpresa.poblacion"></div>
+      <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="editableEmpresa.poblacion"></div>
+  
+      <div class="col-2"><label>Provincia:</label></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="editableEmpresa.provincia"></div>
+      <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="editableEmpresa.provincia"></div>
+  
+      <div></div>
+      <div class="col-2"><label>Valor:</label></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="agua.valor_agua"></div>
+      <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="agua.valor_agua"></div>
+      <div></div>
+      <div *ngIf="!editando" class="col-2"><button class="btn btn-primary" (click)="verEditar()">Editar</button></div>
+      <div *ngIf="editando" class="col-2"><button class="btn btn-success" (click)="editar()">Guardar</button></div>
+      <div *ngIf="editando" class="col-2"><button class="btn btn-danger" (click)="noEditar()">Cancelar</button></div>
+    </div>
+  </div>
+  

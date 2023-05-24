@@ -36,13 +36,15 @@ export class BaseService {
   }
 
   public post<T>(path: string, data: any): Observable<T> {
-    return this.http.post<T>(`${ALL_API}${path}` + '/0', data, {
+    console.log(`${ALL_API}${path}`);
+    return this.http.post<T>(`${ALL_API}${path}`, data, {
       
     });
   }
 
   public put<T>(path: string, data: any): Observable<T> {
-    return this.http.put<T>(`${ALL_API}${path}` + '/' + data.id, data, {
+    console.log(`${ALL_API}${path}`);
+    return this.http.put<T>(`${ALL_API}${path}`, data, {
       
     });
   }

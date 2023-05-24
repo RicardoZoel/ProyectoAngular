@@ -1,85 +1,73 @@
-<div class="row mt-3">
-    <div class="col row">
-      <h1>{{title}}</h1>
-  
-  
-      <div class="container-opciones col row">
-        <input class="col-5 buscar" type="search" ngModel="filter" placeholder="Buscar..." />
-  
-      </div>
-  
-
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col" width="10">
-  
-                <input type="checkbox" ngModel="isSelectAll"/>
-                 <!-- <input type="checkbox" *ngIf="visualModes.defaultMode == '' || visualModes.selectMultipleMode == ''"
-                  [(ngModel)]="isSelectAll" (click)="selectAll()" />-->
-              </th>
-              <th scope="col" width="100" sortableUsuario="name">
-                Nombre
-              </th>
-              <th scope="col" sortableUsuario="apellidos" width="100">
-                Apellidos
-              </th>
-              <th scope="col" sortableUsuario="nifcif" class="text-center"
-                width="100">
-                NIF/CIF
-              </th>
-              <th  scope="col" sortableUsuario="fecha_nacimiento" class="text-center"
-                width="150">
-                Fecha de nacimiento
-              </th>
-              <th scope="col" sortableUsuario="mobil" class="text-center" width="150">
-                Numero de teléfono
-              </th>
-              <th  scope="col" sortableUsuario="email" class="text-center"
-                width="150">
-                Email
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="
-                let usuario of usuarios | usuarioPipe : filter
-              ">
-              <td>
-                <input type="checkbox" ngModel="usuarios.select" />
-              </td>
-              <td (click)="openOptionsForm(usuario)">
-                {{ usuario.name }}
-              </td>
-              <td (click)="openOptionsForm(usuario)">
-                {{ usuario.apellido }}
-              </td>
-              <td  (click)="openOptionsForm(usuario)" class="text-center">
-                {{ usuario.nif }}
-              </td>
-              <td  (click)="openOptionsForm(usuario)" class="text-center">
-                {{ usuario.direccion }}
-              </td>
-              <td (click)="openOptionsForm(usuario)" class="text-center">
-                {{ usuario.poblacion }} / Fijo: {{ usuario.telefono }}
-              </td>
-              <td  (click)="openOptionsForm(usuario)" class="text-center">
-                {{ usuario.provincia }}
-              </td>
-              <td  (click)="openOptionsForm(usuario)" class="text-center">
-                {{ usuario.cuenta_bancaria }}
-              </td>
-              <td  (click)="openOptionsForm(usuario)" class="text-center">
-                {{ usuario.telefono }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="row mt-3 page">
+  <div class="row">
+    <div class="col-12" *ngIf="selected_usuario.id == 0">
+      <h2>Nuevo usuario</h2>
+    </div>
+    <div class="col-12" *ngIf="selected_usuario.id != 0">
+      <h2>{{ cabezera }}</h2>
+    </div>
+    <div class="col-12 row">
+      <div class="col-3"><label>Nombre:</label><input type="text" [(ngModel)]="selected_usuario.name"
+          placeholder="Nombre"></div>
+      <div class="col-3"><label>Apellidos:</label><input type="text" [(ngModel)]="selected_usuario.apellido"
+          placeholder="Apellidos"></div>
+      <div class="col-3"><label>Direccion:</label><input type="text" [(ngModel)]="selected_usuario.direccion"
+          placeholder="Direccion"></div>
+      <div class="col-3"><label>Poblacion:</label><input type="text" [(ngModel)]="selected_usuario.poblacion"
+          placeholder="Poblacion"></div>
+      <div class="col-3"><label>Provincia:</label><input type="text" [(ngModel)]="selected_usuario.provincia"
+          placeholder="Provincia"></div>
+      <div class="col-3"><label>NIF/CIF:</label><input type="text" [(ngModel)]="selected_usuario.nif"
+          placeholder="NIF/CIF"></div>
+      <div class="col-3"><label>Cuenta bancaria:</label><input type="text"
+          [(ngModel)]="selected_usuario.cuenta_bancaria" placeholder="Cuenta bancaria"></div>
+      <div class="col-3"><label>Numero de teléfono:</label><input type="text" [(ngModel)]="selected_usuario.telefono"
+          placeholder="Teléfono"></div>
+    </div>
+    <div class="col-1">
+      <button *ngIf="selected_usuario.id != 0" class="btn btn-info" (click)="crearUsuario()">Modificar</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-success" *ngIf="selected_usuario.id == 0" (click)="crearUsuario()">Crear</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-danger" (click)="limpiar_datos()">Cancelar</button>
     </div>
   </div>
-  
-  <ng-template #content let-modal>
-    <!--<usuarios-form (closePopupEvent)="closePopup()" [usuarioIndex]="usuarioIndex"></usuarios-form>-->
-  </ng-template>
+  <div class="col-12 row">
+    <h1>Lista de usuarios</h1>
+    <div class="container-opciones col row">
+      <input class="col-5 buscar" type="search" [(ngModel)]="filter" placeholder="Buscar..." />
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" width="100" sortableUsuario="name">Nombre</th>
+            <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">NIF/CIF</th>
+            <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">Direccion</th>
+            <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">Poblacion</th>
+            <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">Provincia</th>
+            <th scope="col" sortableUsuario="fecha_nacimiento" class="text-center" width="150">Cuenta Bancaria</th>
+            <th scope="col" sortableUsuario="mobil" class="text-center" width="150">Numero de teléfono</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios | usuarioPipe : filter">
+            <td (click)="openOptionsForm(usuario)">{{ usuario.name }} {{ usuario.apellido }}</td>
+            <td (click)="openOptionsForm(usuario)" class="text-center">{{ usuario.nif }}</td>
+            <td (click)="openOptionsForm(usuario)" class="text-center">{{ usuario.direccion }}</td>
+            <td (click)="openOptionsForm(usuario)" class="text-center">{{ usuario.poblacion }}</td>
+            <td (click)="openOptionsForm(usuario)" class="text-center">{{ usuario.provincia }}</td>
+            <td (click)="openOptionsForm(usuario)" class="text-center">{{ usuario.cuenta_bancaria }}</td>
+            <td (click)="openOptionsForm(usuario)" class="text-center">{{ usuario.telefono }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <!--<usuarios-form (closePopupEvent)="closePopup()" [usuarioIndex]="usuarioIndex"></usuarios-form>-->
+</ng-template>

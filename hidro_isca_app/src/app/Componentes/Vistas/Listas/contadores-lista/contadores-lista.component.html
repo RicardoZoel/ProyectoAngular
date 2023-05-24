@@ -1,1 +1,58 @@
-<p>contadores-lista works!</p>
+<div class="row">
+  <div class="col-12" *ngIf="selected_contador.id == 0">
+    <h2>Nuevo contador</h2>
+  </div>
+  <div class="col-12" *ngIf="selected_contador.id != 0">
+    <h2>{{ cabezera }}</h2>
+  </div>
+  <div class="col-12 row">
+    <div class="col-3">
+      <label>Nombre del contador:</label><br>
+      <input type="text" [(ngModel)]="selected_contador.name" placeholder="Nombre">
+    </div>
+    <div class="col-3 seleccionar">
+      <label>Usuario:</label>
+      <app-seleccionar #seleccionarUsuarios class="col-10" [objetoTratar]="'usuarios'"
+        [esBuscableEnBaseDeDatos]="true" [esGetAllAlEmpezar]="true" (OutputObjeto)="addUsuario($event)"></app-seleccionar>
+    </div>
+    <div class="col-3">
+      <label>Empresa:</label>
+      <br>
+      <input type="text" [(ngModel)]="empresa" placeholder="Direccion" readonly>
+    </div>
+  </div>
+  <div class="col-1">
+    <button *ngIf="selected_contador.id != 0" class="btn btn-info" (click)="crearContador()">Modificar</button>
+  </div>
+  <div class="col-1">
+    <button class="btn btn-success" *ngIf="selected_contador.id == 0" (click)="crearContador()">Crear</button>
+  </div>
+  <div class="col-1">
+    <button class="btn btn-danger" (click)="limpiar_datos()">Cancelar</button>
+  </div>
+</div>
+
+<div class="col-12 row">
+  <h1>Lista de Contadores</h1>
+  <div class="container-opciones col row">
+    <input class="col-5 buscar" type="search" [(ngModel)]="filter" placeholder="Buscar..." />
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" width="100" sortableUsuario="name">Nombre</th>
+          <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">Usuario</th>
+          <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">Empresa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contador of contadores | contadorPipe : filter">
+          <td (click)="openOptionsForm(contador)">{{ contador.name }}</td>
+          <td (click)="openOptionsForm(contador)" class="text-center">{{ contador.usuario[1] }}</td>
+          <td (click)="openOptionsForm(contador)" class="text-center">{{ contador.empresa[1] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

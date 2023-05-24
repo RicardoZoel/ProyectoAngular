@@ -1,0 +1,89 @@
+<div class="col-12 row">
+  
+  <div class="col-12" *ngIf="selected_consumo.id == 0">
+    <h2>Nuevo consumo</h2>
+  </div>
+  <div class="col-12" *ngIf="selected_consumo.id != 0">
+    <h2>Editando el consumo del {{selected_consumo.usuario[1]}}</h2>
+  </div>
+  <div class="col-3"><label>Mes:</label>
+    <select [(ngModel)]="selected_consumo.mes">
+      <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+    </select>
+  </div>
+  <div class="col-3"><label>Año:</label><input type="numbre" [(ngModel)]="selected_consumo.anyo" placeholder="Año">
+  </div>
+  <div class="col-3"><label>MCC:</label><input type="numbre" [(ngModel)]="selected_consumo.MCC"
+      placeholder="Metros Cubicos Consumidos"></div>
+  <div class="col-3"><label>VPMCCT:</label><input type="text" readonly [(ngModel)]="selected_consumo.VPMCCT"
+      placeholder="Valor por Metros Cubicos Consumidos Total"></div>
+  <div class="col-3 seleccionar">
+    <label>Usuario:</label>
+    <app-seleccionar #seleccionarUsuarios class="col-10" [estaPorEncima]="true" [objetoTratar]="'usuarios'" [esBuscableEnBaseDeDatos]="true"
+      [esGetAllAlEmpezar]="true" (OutputObjeto)="addUsuario($event)"></app-seleccionar>
+  </div>
+  <div class="col-3 seleccionar">
+    <label>Contador:</label>
+    <app-seleccionar #seleccionarUsuarios [estaPorEncima]="true" class="col-10" [objetoTratar]="'contador'"
+      [esBuscableEnBaseDeDatos]="true" [esGetAllAlEmpezar]="true" (OutputObjeto)="addContador($event)"></app-seleccionar>
+  </div>
+  <div class="col-1">
+    <button *ngIf="selected_consumo.id != 0" class="btn btn-info" (click)="crearConsumo()">Modificar</button>
+  </div>
+  <div class="col-1">
+    <button class="btn btn-success" *ngIf="selected_consumo.id == 0" (click)="crearConsumo()">Crear</button>
+  </div>
+  <div class="col-1">
+    <button class="btn btn-danger" (click)="limpiar_datos()">Cancelar</button>
+  </div>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col" width="100" sortableUsuario="name">
+          Usuario
+        </th>
+        <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">
+          Contador
+        </th>
+        <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">
+          Mes
+        </th>
+        <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">
+          Año
+        </th>
+        <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">
+          MCC
+        </th>
+        <th scope="col" sortableUsuario="nifcif" class="text-center" width="100">
+          VPMCCT
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let consumo of consumos">
+        <td (click)="openOptionsForm(consumo)">
+          {{ consumo.usuario[1] }}
+        </td>
+        <td (click)="openOptionsForm(consumo)" class="text-center">
+          {{ consumo.contador[1] }}
+        </td>
+        <td (click)="openOptionsForm(consumo)" class="text-center">
+          {{ consumo.mes }}
+        </td>
+        <td (click)="openOptionsForm(consumo)" class="text-center">
+          {{ consumo.anyo }}
+        </td>
+        <td (click)="openOptionsForm(consumo)" class="text-center">
+          {{ consumo.MCC }}
+        </td>
+        <td (click)="openOptionsForm(consumo)" class="text-center">
+          {{ consumo.VPMCCT }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
