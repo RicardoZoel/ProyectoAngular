@@ -52,7 +52,26 @@ export class ContadorControlador {
           );
       });
   }
-
+  getContador(arg0: any): any {
+    return new Promise<Contador[]>((resolve) => {
+        this.baseService
+          .get('getContadores/'+arg0)
+          .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
+          .subscribe(
+            (data: any) => {
+              console.log(data)
+              if (data['error'] == undefined) {
+                
+                resolve(data['data']);
+              }
+            },
+            (error: any) => {
+              
+              console.log(error)
+            }
+          );
+      });
+  }
   putContador(selected_contador: Contador) {
     return new Promise<boolean>((resolve) => {
       this.baseService
@@ -60,10 +79,10 @@ export class ContadorControlador {
         .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
         .subscribe(
           (data: any) => {
+            console.log(data)
          
             if (data['error'] == undefined) {
               console.log(data)
-              console.log(data['data'])
               resolve(true);
             }
           },

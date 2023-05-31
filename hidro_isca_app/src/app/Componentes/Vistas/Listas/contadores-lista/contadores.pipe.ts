@@ -13,10 +13,10 @@ export class ContadorPipe implements PipeTransform {
     if (!values || values.length === 0) {
       return [];
     }
-
     filter = filter.toLowerCase();
 
     return values.filter((value: Contador) => {
+      console.log(value)
       const name = value.name.toLowerCase();
       console.log(name.includes(filter))
       return name.includes(filter);

@@ -3,29 +3,30 @@
       <h1 class="col-2">Empresa</h1>
       <div></div>
       <div class="col-2"><label>Nombre:</label></div>
-      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="editableEmpresa.name"></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control readonly" [(ngModel)]="empresa.name"></div>
       <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="editableEmpresa.name"></div>
       <div></div>
   
       <div class="col-2"><label>Dirección:</label></div>
-      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="editableEmpresa.direccion"></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control readonly" [(ngModel)]="empresa.direccion"></div>
       <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="editableEmpresa.direccion"></div>
   
       <div class="col-2"><label>Población:</label></div>
-      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="editableEmpresa.poblacion"></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control readonly" [(ngModel)]="empresa.poblacion"></div>
       <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="editableEmpresa.poblacion"></div>
   
       <div class="col-2"><label>Provincia:</label></div>
-      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="editableEmpresa.provincia"></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control readonly" [(ngModel)]="empresa.provincia"></div>
       <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="editableEmpresa.provincia"></div>
   
       <div></div>
       <div class="col-2"><label>Valor:</label></div>
-      <div *ngIf="!editando" class="col-4"><input readonly class="form-control bg-secondary" [(ngModel)]="agua.valor_agua"></div>
-      <div *ngIf="editando" class="col-4"><input class="form-control" [(ngModel)]="agua.valor_agua"></div>
+      <div *ngIf="!editando" class="col-4"><input readonly class="form-control readonly" [(ngModel)]="agua.valor_agua"></div>
+      <div *ngIf="editando" class="col-4"><input class="form-control" type="number" [(ngModel)]="editableAgua.valor_agua"></div>
       <div></div>
       <div *ngIf="!editando" class="col-2"><button class="btn btn-primary" (click)="verEditar()">Editar</button></div>
-      <div *ngIf="editando" class="col-2"><button class="btn btn-success" (click)="editar()">Guardar</button></div>
+      <div *ngIf="editando && (this.agua.valor_agua!=this.editableAgua.valor_agua || this.empresa.name!=this.editableEmpresa.name || this.empresa.direccion!=this.editableEmpresa.direccion || this.empresa.poblacion!=this.editableEmpresa.poblacion || this.empresa.provincia!=this.editableEmpresa.provincia)" class="col-2"><button class="btn btn-success" (click)="editar()">Guardar</button></div>
+      <div *ngIf="editando &&  this.agua.valor_agua==this.editableAgua.valor_agua && this.empresa.name==this.editableEmpresa.name && this.empresa.direccion==this.editableEmpresa.direccion && this.empresa.poblacion==this.editableEmpresa.poblacion && this.empresa.provincia==this.editableEmpresa.provincia" class="col-2"><button class="btn btn-secondary">Guardar</button></div>
       <div *ngIf="editando" class="col-2"><button class="btn btn-danger" (click)="noEditar()">Cancelar</button></div>
     </div>
   </div>

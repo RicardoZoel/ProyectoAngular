@@ -1,0 +1,121 @@
+<div class="col-12 row">
+  
+    <div class="col-12" *ngIf="selected_Recibo.id == 0">
+      <h2>Nuevo Recibo</h2>
+    </div>
+    <div class="col-12" *ngIf="selected_Recibo.id != 0">
+      <h2>Recibo de {{selected_Recibo.usuario[1]}} del periodo {{selected_Recibo.periodo_trimestral}} del año  {{selected_Recibo.anyo}}</h2>
+    </div>
+
+    <div class="col-4" *ngIf="selected_Recibo.id == 0"><label>Mes:</label>
+      <select [(ngModel)]="selected_Recibo.periodo_trimestral">
+        <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+      </select>
+    </div>
+    <div class="col-4" *ngIf="selected_Recibo.id == 0"><label>Año:</label><input type="number"  [(ngModel)]="selected_Recibo.anyo" placeholder="Año">
+    </div>
+
+
+    <div class="col-4" *ngIf="selected_Recibo.id != 0"><label>Mes:</label>
+      <select disabled="true" [(ngModel)]="selected_Recibo.periodo_trimestral">
+        <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+      </select>
+    </div>
+    <div class="col-4" *ngIf="selected_Recibo.id != 0"><label>Año:</label><input type="number" [readOnly]="" [(ngModel)]="selected_Recibo.anyo" placeholder="Año">
+    </div>
+
+
+    <div class="col-4 seleccionar">
+        <label>Usuario:</label>
+        <app-seleccionar #seleccionarUsuarioC class="col-10" [estaPorEncima]="true" [objetoTratar]="'usuarios'" [esBuscableEnBaseDeDatos]="true"
+          [esGetAllAlEmpezar]="true" (OutputObjeto)="addUsuario($event)"></app-seleccionar>
+      </div>
+    <!-- <div class="col-3"><label>MCCT:</label><input type="numbre" [(ngModel)]="selected_Recibo.MCCT"
+        placeholder="Metros Cubicos Consumidos"></div>
+    <div class="col-3"><label>VPMCCT:</label><input type="text" readonly [(ngModel)]="selected_Recibo.VPMCCT"
+        placeholder="Valor por Metros Cubicos Consumidos Total"></div> -->
+        <div class="col-8 center" >
+      
+        </div>
+        <div class="col-2 center" *ngIf="selected_Recibo.id != 0 && selected_Recibo.estado!=1" >
+        </div>
+    <div class="col-2 center" *ngIf="selected_Recibo.id != 0 && selected_Recibo.estado==1" >
+      <!-- <button class="btn btn-success" (click)="pagarRecibo()">Pagar</button> -->
+    </div>
+    <div class="col-2 center" *ngIf="selected_Recibo.id == 0">
+      <button class="btn btn-success" (click)="crearRecibo()">Crear</button>
+    </div>
+    <div class="col-2 center">
+      <button class="btn btn-danger" (click)="limpiar_datos()">Limpiar datos</button>
+    </div>
+  </div>
+  
+  
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" width="100" sortableUsuario="name">
+            Usuario
+          </th>
+          <th scope="col"  class="text-center" width="100">
+            Año
+          </th>
+          <th scope="col"  class="text-center" width="100">
+            Periodo Trimestral
+          </th>
+          <th scope="col"  class="text-center" width="100">
+            MCC
+          </th>
+          <th scope="col"  class="text-center" width="100">
+            VPMCCT
+          </th>
+          <th scope="col"  class="text-center" width="100">
+            Estado
+          </th>
+          <!-- <th scope="col"  class="text-center" width="30">
+
+          </th>
+          <th scope="col"  class="text-center" width="30">
+
+          </th>
+          <th scope="col"  class="text-center" width="30">
+
+          </th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Recibo of Recibos">
+          <td (click)="openOptionsForm(Recibo)">
+            {{ Recibo.usuario[1] }}
+          </td>
+          <td (click)="openOptionsForm(Recibo)" class="text-center">
+            {{ Recibo.anyo }}
+          </td>
+          <td (click)="openOptionsForm(Recibo)" class="text-center">
+            {{ months[Recibo.periodo_trimestral - 1]['name'] }}
+          </td>
+          <td (click)="openOptionsForm(Recibo)" class="text-center">
+            {{ Recibo.MCCT }}
+          </td>
+          <td (click)="openOptionsForm(Recibo)" class="text-center">
+            {{ Recibo.VPMCCT }}
+          </td>
+          <td (click)="openOptionsForm(Recibo)" class="text-center">
+            {{ estado[Recibo.estado - 1]['name'] }}
+          </td>
+          <td *ngIf="Recibo.estado==2" class="text-center eliminar">
+          </td>
+          <!-- <td (click)="imprimir(Recibo)" class="text-center imprimir">
+            <fa-icon [icon]="faImprimir"></fa-icon>
+          </td>
+          <td (click)="pagar(Recibo)" class="text-center pagar">
+            <fa-icon [icon]="faRecibo"></fa-icon>
+          </td>
+          <td (click)="eliminar(Recibo)" *ngIf="Recibo.estado==1" class="text-center eliminar">
+            <fa-icon [icon]="faEliminar"></fa-icon>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -52,8 +52,7 @@ export class SeleccionarComponent implements OnChanges {
 
   async addDesdePadre(objeto: any) {
     this.vistas.soloVer = true;
-    console.log(objeto);
-    this.objetoSeleccionado = objeto;
+    this.objetoSeleccionado = JSON.parse(JSON.stringify(objeto[0]));
   }
 
   async cambiarAEditar() {

@@ -20,7 +20,6 @@ export class EmpresaControlador {
           (data: any) => {
          
             if (data['error'] == undefined) {
-              console.log(data)
               resolve(true);
             }
           },
@@ -41,8 +40,6 @@ export class EmpresaControlador {
           (data: any) => {
          
             if (data['error'] == undefined) {
-              console.log(data)
-              console.log(data['data'])
               resolve(true);
             }
           },
@@ -65,7 +62,6 @@ getEmpresa(): any {
             (data: any) => {
            
               if (data['error'] == undefined) {
-                console.log(data['data'])
                 resolve(data['data'][0]);
               }
             },
@@ -86,7 +82,6 @@ getEmpresa(): any {
             (data: any) => {
            
               if (data['error'] == undefined) {
-                console.log(data['data'])
                 resolve(data['data'][0]);
               }
             },

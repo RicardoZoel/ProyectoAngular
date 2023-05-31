@@ -47,7 +47,7 @@ export class NavegarPorVentanasComponent {
   isListaUsuarios = false;
   isListaContadores=false;
   isListaConsumos=false;
-  isListaRecivo=false;
+  isListaRecibo=false;
   //ICONOS
   faPowerOff = faPowerOff;
   faHome = faHome;
@@ -71,7 +71,7 @@ export class NavegarPorVentanasComponent {
   faUtensils = faUtensils;
   faBars = faBars;
   faMobile=faMobile
-  faRecivo=faReceipt;
+  faRecibo=faReceipt;
   faGastar=faGauge;
   
   constructor() {
@@ -88,7 +88,7 @@ export class NavegarPorVentanasComponent {
     this.isListaUsuarios = this.page.includes('/listaUsuarios');
     this.isListaContadores = this.page.includes('/listaContadores');
     this.isListaConsumos = this.page.includes('/listaConsumos');
-    this.isListaRecivo = this.page.includes('/listaRecivo');
+    this.isListaRecibo = this.page.includes('/listaRecibo');
   }
 
   logOut(): void {

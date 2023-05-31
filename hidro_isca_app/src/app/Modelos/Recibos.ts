@@ -1,4 +1,4 @@
-export class Recivos{
+export class Recibos{
     id:number;
     periodo_trimestral:number;
     anyo: number;

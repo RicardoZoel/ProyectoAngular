@@ -16,7 +16,7 @@ import { VistaEmpresaComponent } from './Componentes/Vistas/vista-empresa/vista-
 import { ContadorPipe } from './Componentes/Vistas/Listas/contadores-lista/contadores.pipe';
 import { SeleccionarComponent } from './Componentes/Vistas/Extras/seleccionar/seleccionar.component';
 import { ConsumosListaComponent } from './Componentes/Vistas/Listas/consumos-lista/consumos-lista.component';
-import { RecivosListaComponent } from './Componentes/Vistas/Listas/recivos-lista/recivos-lista.component';
+import { RecibosListaComponent } from './Componentes/Vistas/Listas/Recibos-lista/Recibos-lista.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,7 @@ import { RecivosListaComponent } from './Componentes/Vistas/Listas/recivos-lista
     ContadorPipe,
     SeleccionarComponent,
     ConsumosListaComponent,
-    RecivosListaComponent,
+    RecibosListaComponent,
     
   ],
   imports: [

@@ -12,7 +12,7 @@
     </div>
     <div class="col-3 seleccionar">
       <label>Usuario:</label>
-      <app-seleccionar #seleccionarUsuarios class="col-10" [objetoTratar]="'usuarios'"
+      <app-seleccionar #seleccionarUsuarioC class="col-10" [objetoTratar]="'usuarios'"
         [esBuscableEnBaseDeDatos]="true" [esGetAllAlEmpezar]="true" (OutputObjeto)="addUsuario($event)"></app-seleccionar>
     </div>
     <div class="col-3">
@@ -21,22 +21,22 @@
       <input type="text" [(ngModel)]="empresa" placeholder="Direccion" readonly>
     </div>
   </div>
-  <div class="col-1">
-    <button *ngIf="selected_contador.id != 0" class="btn btn-info" (click)="crearContador()">Modificar</button>
+  <div class="col-2 center" *ngIf="selected_contador.id != 0">
+    <button class="btn btn-info" (click)="crearContador()">Modificar</button>
   </div>
-  <div class="col-1">
-    <button class="btn btn-success" *ngIf="selected_contador.id == 0" (click)="crearContador()">Crear</button>
+  <div class="col-2 center" *ngIf="selected_contador.id == 0">
+    <button class="btn btn-success" (click)="crearContador()">Crear</button>
   </div>
-  <div class="col-1">
+  <div class="col-2">
     <button class="btn btn-danger" (click)="limpiar_datos()">Cancelar</button>
   </div>
 </div>
 
 <div class="col-12 row">
   <h1>Lista de Contadores</h1>
-  <div class="container-opciones col row">
+  <!-- <div class="container-opciones col row">
     <input class="col-5 buscar" type="search" [(ngModel)]="filter" placeholder="Buscar..." />
-  </div>
+  </div> -->
   <div class="table-responsive">
     <table class="table table-hover">
       <thead class="thead-light">
@@ -47,7 +47,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let contador of contadores | contadorPipe : filter">
+        <tr *ngFor="let contador of contadores">
           <td (click)="openOptionsForm(contador)">{{ contador.name }}</td>
           <td (click)="openOptionsForm(contador)" class="text-center">{{ contador.usuario[1] }}</td>
           <td (click)="openOptionsForm(contador)" class="text-center">{{ contador.empresa[1] }}</td>

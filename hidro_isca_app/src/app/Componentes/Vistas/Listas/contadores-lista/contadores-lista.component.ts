@@ -25,16 +25,20 @@ export class ContadoresListaComponent implements OnInit {
 
 limpiar_datos() {
   this.selected_contador={id:0, empresa:1}as Contador;
+  this.seleccionarUsuarioC.cambiarAEditar()
 }
   async crearContador() {
   if (await this.checkData()) {
 
     if (this.selected_contador.id == 0) {
+      console.log(this.selected_contador)
       if (await this.contadorControlador.postContador(this.selected_contador)){
       swalCalls.llamadaCreado()
-    }
+      }
     } else {
       this.selected_contador.empresa=1
+      this.selected_contador.usuario=this.selected_contador.usuario[0]
+      console.log(this.selected_contador)
       if(await this.contadorControlador.putContador(this.selected_contador)){
         swalCalls.llamadaEditado()}
     }
@@ -96,9 +100,9 @@ limpiar_datos() {
     this.selected_contador=JSON.parse(JSON.stringify(contador))
     this.selected_contador.empresa=this.selected_contador.empresa[1]
     this.cabezera=contador.name
-    var alumno = await this.usuarioControlador.getUsuario(contador.usuario[0])
-    console.log(alumno)
-    await this.seleccionarUsuarioC.addDesdePadre(alumno)
+    var usuario = await this.usuarioControlador.getUsuario(contador.usuario[0])
+    
+    await this.seleccionarUsuarioC.addDesdePadre(usuario)
   }
 
 }

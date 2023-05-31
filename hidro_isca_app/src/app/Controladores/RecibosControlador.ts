@@ -5,15 +5,18 @@ import { timer } from 'rxjs';
 import { take, timeoutWith } from 'rxjs/operators';
 import { Empresa } from '../Modelos/Emresa';
 import { Agua } from '../Modelos/Agua';
-import { Recivos } from '../Modelos/Recivos';
+import { Recibos } from '../Modelos/Recibos';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RecivosControlador {
+export class RecibosControlador {
+  pagarRecibo(selected_Recibo: Recibos) {
+    throw new Error('Method not implemented.');
+  }
     constructor(private baseService: BaseService){}
-    getRecivos(): any {
-    return new Promise<Recivos[]>((resolve) => {
+    getRecibos(): any {
+    return new Promise<Recibos[]>((resolve) => {
         this.baseService
           .get('getRecivos')
           .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
@@ -33,11 +36,11 @@ export class RecivosControlador {
       });
   }
 
-  putRecivo(selected_recivo: Recivos) {
-    console.log(JSON.stringify(selected_recivo))
+  putRecibo(selected_Recibo: Recibos) {
+    console.log(JSON.stringify(selected_Recibo))
     return new Promise<boolean>((resolve) => {
       this.baseService
-        .put('putRecivo/'+selected_recivo.id,selected_recivo)
+        .put('putRecivo/'+selected_Recibo.id,selected_Recibo)
         .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
         .subscribe(
           (data: any) => {
@@ -55,10 +58,10 @@ export class RecivosControlador {
         );
     });
   }
-  postRecivo(recivo:Recivos) {
+  postRecibo(Recibo:Recibos) {
     return new Promise<boolean>((resolve) => {
         this.baseService
-          .post('postRecivo',recivo)
+          .post('postRecivo',Recibo)
           .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
           .subscribe(
             (data: any) => {

@@ -4,6 +4,7 @@ import { BaseService } from '../Servicios/base.service';
 
 import { timer } from 'rxjs';
 import { take, timeoutWith } from 'rxjs/operators';
+import { swalCalls } from '../Componentes/Vistas/Extras/swalCalls';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +17,7 @@ export class UsuariosControlador {
         .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
         .subscribe(
           (data: any) => {
-         
-            if (data['error'] == undefined) {
-              console.log(data['data'])
               resolve(data['data']);
-            }
           },
           (error: any) => {
             
@@ -38,15 +35,15 @@ export class UsuariosControlador {
         .subscribe(
           (data: any) => {
          
-            if (data['error'] == undefined) {
-              console.log(data)
-              console.log(data['data'])
+            if (data['result']['error'] == undefined) {
               resolve(true);
+            }else{
+              resolve(false)
             }
           },
           (error: any) => {
             
-            console.log(error)
+            resolve(false)
           }
         );
     });
@@ -59,10 +56,11 @@ export class UsuariosControlador {
           .subscribe(
             (data: any) => {
            
-              if (data['error'] == undefined) {
+              if (data['result']['error'] == undefined) {
                 console.log(data)
-                console.log(data['data'])
                 resolve(true);
+              }else{
+                resolve(false)
               }
             },
             (error: any) => {

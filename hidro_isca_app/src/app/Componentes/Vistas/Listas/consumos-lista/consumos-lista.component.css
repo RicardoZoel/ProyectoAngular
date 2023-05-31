@@ -60,3 +60,6 @@
   .seleccionar{
     z-index: 5;
   }
+  .center{
+    text-align: center;
+  }

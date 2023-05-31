@@ -21,24 +21,24 @@
           placeholder="NIF/CIF"></div>
       <div class="col-3"><label>Cuenta bancaria:</label><input type="text"
           [(ngModel)]="selected_usuario.cuenta_bancaria" placeholder="Cuenta bancaria"></div>
-      <div class="col-3"><label>Numero de teléfono:</label><input type="text" [(ngModel)]="selected_usuario.telefono"
+      <div class="col-3"><label>Numero de teléfono:</label><input type="number" [(ngModel)]="selected_usuario.telefono"
           placeholder="Teléfono"></div>
     </div>
-    <div class="col-1">
-      <button *ngIf="selected_usuario.id != 0" class="btn btn-info" (click)="crearUsuario()">Modificar</button>
+    <div class="col-2 center" *ngIf="selected_usuario.id != 0" >
+      <button class="btn btn-info" (click)="crearUsuario()">Modificar</button>
     </div>
-    <div class="col-1">
-      <button class="btn btn-success" *ngIf="selected_usuario.id == 0" (click)="crearUsuario()">Crear</button>
+    <div class="col-2 center" *ngIf="selected_usuario.id == 0">
+      <button class="btn btn-success" (click)="crearUsuario()">Crear</button>
     </div>
-    <div class="col-1">
+    <div class="col-2 center">
       <button class="btn btn-danger" (click)="limpiar_datos()">Cancelar</button>
     </div>
   </div>
   <div class="col-12 row">
     <h1>Lista de usuarios</h1>
-    <div class="container-opciones col row">
+    <!-- <div class="container-opciones col row">
       <input class="col-5 buscar" type="search" [(ngModel)]="filter" placeholder="Buscar..." />
-    </div>
+    </div> -->
     <div class="table-responsive">
       <table class="table table-hover">
         <thead class="thead-light">
@@ -53,7 +53,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let usuario of usuarios | usuarioPipe : filter">
+          <tr *ngFor="let usuario of usuarios">
             <td (click)="openOptionsForm(usuario)">{{ usuario.name }} {{ usuario.apellido }}</td>
             <td (click)="openOptionsForm(usuario)" class="text-center">{{ usuario.nif }}</td>
             <td (click)="openOptionsForm(usuario)" class="text-center">{{ usuario.direccion }}</td>

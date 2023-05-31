@@ -60,3 +60,18 @@
   .seleccionar{
     z-index: 5;
   }
+  
+  .center{
+    text-align: center;
+  }
+  .imprimir{
+    color: blue;
+  }
+  .pagar{
+
+    color: green;
+  }
+  .eliminar{
+
+    color: red;
+  }

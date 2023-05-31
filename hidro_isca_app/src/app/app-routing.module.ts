@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'listaUsuarios', component: PaginaPrincipalComponent },
   { path: 'listaContadores', component: PaginaPrincipalComponent },
   { path: 'listaConsumos', component: PaginaPrincipalComponent },
-  { path: 'listaRecivos', component: PaginaPrincipalComponent },
+  { path: 'listaRecibos', component: PaginaPrincipalComponent },
   { path: 'vistaEmpresa', component: PaginaPrincipalComponent },
 ];
 
