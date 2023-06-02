@@ -15,7 +15,7 @@ export class PaginaPrincipalComponent {
   constructor(private route: Router) {
     
     this.page = this.route.url;
-    //////console.log(this.page);
+    ////////console.log(this.page);
   }
 
   logOut(): void {

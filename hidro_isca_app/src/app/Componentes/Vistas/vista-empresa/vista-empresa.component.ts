@@ -91,7 +91,7 @@ export class VistaEmpresaComponent {
     });
   }
   async editar() {
-    console.log(this.editableEmpresa.name==this.editableEmpresa.name)
+    //console.log(this.editableEmpresa.name==this.editableEmpresa.name)
     if (await this.checkData()) {
       await this.empresaControlador.editarAgua(this.editableAgua);
       await this.empresaControlador.editarEmpresa(this.editableEmpresa);

@@ -25,7 +25,7 @@ export class EmpresaControlador {
           },
           (error: any) => {
             
-            console.log(error)
+            //console.log(error)
           }
         );
     });
@@ -45,7 +45,7 @@ export class EmpresaControlador {
           },
           (error: any) => {
             
-            console.log(error)
+            //console.log(error)
           }
         );
     });
@@ -53,7 +53,7 @@ export class EmpresaControlador {
   }
 constructor(private baseService: BaseService){}
 getEmpresa(): any {
-    console.log("data")
+    //console.log("data")
     return new Promise<Empresa>((resolve) => {
         this.baseService
           .get('getEmpresa')
@@ -67,13 +67,13 @@ getEmpresa(): any {
             },
             (error: any) => {
               
-              console.log(error)
+              //console.log(error)
             }
           );
       });
   }
   getAgua(): any {
-    console.log("data")
+    //console.log("data")
     return new Promise<Agua>((resolve) => {
         this.baseService
           .get('getAgua')
@@ -87,7 +87,7 @@ getEmpresa(): any {
             },
             (error: any) => {
               
-              console.log(error)
+              //console.log(error)
             }
           );
       });

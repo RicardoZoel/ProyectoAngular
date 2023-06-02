@@ -21,7 +21,7 @@ export class UsuariosControlador {
           },
           (error: any) => {
             
-            console.log(error)
+            //console.log(error)
           }
         );
     });
@@ -57,7 +57,7 @@ export class UsuariosControlador {
             (data: any) => {
            
               if (data['result']['error'] == undefined) {
-                console.log(data)
+                //console.log(data)
                 resolve(true);
               }else{
                 resolve(false)
@@ -65,7 +65,7 @@ export class UsuariosControlador {
             },
             (error: any) => {
               
-              console.log(error)
+              //console.log(error)
             }
           );
       });
@@ -74,7 +74,7 @@ export class UsuariosControlador {
   constructor(private baseService: BaseService){}
   
   getUsuarios(): any {
-    console.log("data")
+    //console.log("data")
     return new Promise<Usuario[]>((resolve) => {
         this.baseService
           .get('getUsuario')
@@ -83,13 +83,13 @@ export class UsuariosControlador {
             (data: any) => {
            
               if (data['error'] == undefined) {
-                console.log(data['data'])
+                //console.log(data['data'])
                 resolve(data['data']);
               }
             },
             (error: any) => {
               
-              console.log(error)
+              //console.log(error)
             }
           );
       });

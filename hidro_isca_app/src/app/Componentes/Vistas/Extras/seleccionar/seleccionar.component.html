@@ -1,7 +1,7 @@
 <div class="container" *ngIf="estaPorEncima && !vistas.soloVer">
     <div class="container-select row">
         <div class="col-10 p-0">
-            <input (click)="abrirLista()" (keyup)="actualizar($event)" type="text" class="form-control"
+            <input (click)="abrirLista()" (keyup)="actualizar($event)" [value]="filtro" type="text" class="form-control"
                 placeholder="Buscar...">
         </div>
         <div class="col-2"> <button (click)="enviarObjeto({id:0})" type="button"
@@ -18,7 +18,7 @@
 </div>
 <div class="container2" *ngIf="!estaPorEncima && !vistas.soloVer">
     <div class="container-select row">
-        <div class="col-10"><input (click)="abrirLista()" (keyup)="actualizar($event)" type="text"
+        <div class="col-10"><input (click)="abrirLista()" [value]="filtro" (keyup)="actualizar($event)" type="text"
                 class="form-control" placeholder="Buscar..."></div>
         <div class="col-2"> <button (click)="enviarObjeto({id:0})" type="button" class="btn btn-danger text-center">X
             </button>

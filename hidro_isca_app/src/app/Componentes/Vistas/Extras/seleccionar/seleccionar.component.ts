@@ -42,10 +42,10 @@ export class SeleccionarComponent implements OnChanges {
   constructor(private controller: SeleccionarController) { }
   ngOnChanges() {
     this.loadObjeto();
-    console.log(this.objetos);
+    //console.log(this.objetos);
   }
   async actualizar(e: any) {
-    console.log(this.objetos);
+    //console.log(this.objetos);
     this.filtro = e.target.value;
     this.loadObjeto();
   }
@@ -66,7 +66,7 @@ export class SeleccionarComponent implements OnChanges {
         if (this.filtro == '') {
           if (this.esGetAllAlEmpezar) {
             this.objetos = await this.controller.seleccionarObjeto(this.objetoTratar);
-            console.log(1);
+            //console.log(1);
           } else {
             this.objetos = [];
           }
@@ -80,7 +80,7 @@ export class SeleccionarComponent implements OnChanges {
         if (this.filtro == '') {
           if (this.esGetAllAlEmpezar) {
             this.objetos = await this.controller.seleccionarObjetoPorUsuario(this.objetoTratar,this.flitrarPorUsuario.id);
-            console.log(1);
+            //console.log(1);
           } else {
             this.objetos = [];
           }

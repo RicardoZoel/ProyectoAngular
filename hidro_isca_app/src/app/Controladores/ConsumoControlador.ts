@@ -21,20 +21,20 @@ export class ConsumoControlador {
             (data: any) => {
            
               if (data['error'] == undefined) {
-                console.log(data['data'])
+                //console.log(data['data'])
                 resolve(data['data']);
               }
             },
             (error: any) => {
               
-              console.log(error)
+              //console.log(error)
             }
           );
       });
   }
 
   putConsumo(selected_consumo: Consumo) {
-    console.log(JSON.stringify(selected_consumo))
+    //console.log(JSON.stringify(selected_consumo))
     return new Promise<boolean>((resolve) => {
       this.baseService
         .put('putConsumo/'+selected_consumo.id,selected_consumo)
@@ -43,14 +43,14 @@ export class ConsumoControlador {
           (data: any) => {
          
             if (data['error'] == undefined) {
-              console.log(data)
-              console.log(data['data'])
+              //console.log(data)
+              //console.log(data['data'])
               resolve(true);
             }
           },
           (error: any) => {
             
-            console.log(error)
+            //console.log(error)
           }
         );
     });
@@ -64,14 +64,14 @@ export class ConsumoControlador {
             (data: any) => {
            
               if (data['error'] == undefined) {
-                console.log(data)
-                console.log(data['data'])
+                //console.log(data)
+                //console.log(data['data'])
                 resolve(true);
               }
             },
             (error: any) => {
               
-              console.log(error)
+              //console.log(error)
             }
           );
       });

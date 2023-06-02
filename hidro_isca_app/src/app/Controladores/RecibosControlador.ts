@@ -24,20 +24,20 @@ export class RecibosControlador {
             (data: any) => {
            
               if (data['error'] == undefined) {
-                console.log(data['data'])
+                //console.log(data['data'])
                 resolve(data['data']);
               }
             },
             (error: any) => {
               
-              console.log(error)
+              //console.log(error)
             }
           );
       });
   }
 
   putRecibo(selected_Recibo: Recibos) {
-    console.log(JSON.stringify(selected_Recibo))
+    //console.log(JSON.stringify(selected_Recibo))
     return new Promise<boolean>((resolve) => {
       this.baseService
         .put('putRecivo/'+selected_Recibo.id,selected_Recibo)
@@ -46,14 +46,14 @@ export class RecibosControlador {
           (data: any) => {
          
             if (data['error'] == undefined) {
-              console.log(data)
-              console.log(data['data'])
+              //console.log(data)
+              //console.log(data['data'])
               resolve(true);
             }
           },
           (error: any) => {
             
-            console.log(error)
+            //console.log(error)
           }
         );
     });
@@ -67,11 +67,11 @@ export class RecibosControlador {
             (data: any) => {
            
               if (data['result']['error'] == undefined) {
-                console.log(data);
-                console.log(data['data']);
+                //console.log(data);
+                //console.log(data['data']);
                 resolve(true);
               }else{
-                console.log(data);
+                //console.log(data);
               }
             },
             (error: any) => {

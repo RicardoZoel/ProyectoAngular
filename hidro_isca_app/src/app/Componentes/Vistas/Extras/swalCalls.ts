@@ -35,7 +35,16 @@ export class swalCalls {
         title: 'No se ha podido crear ya que ya hay un Recibo con esos parametros!',
         showConfirmButton: false,
         timer: 1500,
+    });}
+    static llamadaErrorKeyDuplucadoContador() {
+        Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'No se ha podido crear ya que ya hay un Contador con esos parametros!',
+        showConfirmButton: false,
+        timer: 1500,
     });
+
     }
 
     static llamadaCreado(){

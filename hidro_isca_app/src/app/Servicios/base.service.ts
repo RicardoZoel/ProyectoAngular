@@ -18,32 +18,32 @@ export class BaseService {
   ) {
     const url = `${ALL_API}${pathObject}`;
     if (pathObjectFilter === '' && custom === '') {
-      console.log(`${url}/${url}`);
+      //console.log(`${url}/${url}`);
       return this.http.get<T>(`${url}`);
     }
     if (pathObjectFilter === '') {
-      console.log(`${url}/${custom}`);
+      //console.log(`${url}/${custom}`);
       return this.http.get<T>(`${url}/${custom}`);
     }
     if (custom === '') {
-      console.log(`${url}/${pathObjectFilter}/${id}`);
+      //console.log(`${url}/${pathObjectFilter}/${id}`);
       return this.http.get<T>(`${url}/${pathObjectFilter}/${id}`);
     }
-    console.log(`${url}/${pathObjectFilter}/${id}/${custom}`);
+    //console.log(`${url}/${pathObjectFilter}/${id}/${custom}`);
     return this.http.get<T>(
       `${url}/${pathObjectFilter}/${id}/${custom}`
     );
   }
 
   public post<T>(path: string, data: any): Observable<T> {
-    console.log(`${ALL_API}${path}`);
+    //console.log(`${ALL_API}${path}`);
     return this.http.post<T>(`${ALL_API}${path}`, data, {
       
     });
   }
 
   public put<T>(path: string, data: any): Observable<T> {
-    console.log(`${ALL_API}${path}`);
+    //console.log(`${ALL_API}${path}`);
     return this.http.put<T>(`${ALL_API}${path}`, data, {
       
     });

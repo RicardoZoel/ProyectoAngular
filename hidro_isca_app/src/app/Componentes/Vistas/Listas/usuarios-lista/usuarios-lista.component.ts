@@ -132,6 +132,7 @@ export class UsuariosListaComponent {
       }
 
       await this.loadUsuarios()
+      await this.limpiar_datos()
     }
   }
   limpiar_datos() {

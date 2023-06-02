@@ -40,7 +40,7 @@
         <div class="col-2 center" *ngIf="selected_Recibo.id != 0 && selected_Recibo.estado!=1" >
         </div>
     <div class="col-2 center" *ngIf="selected_Recibo.id != 0 && selected_Recibo.estado==1" >
-      <!-- <button class="btn btn-success" (click)="pagarRecibo()">Pagar</button> -->
+      <button class="btn btn-success" (click)="pagarRecibo()">Pagar</button>
     </div>
     <div class="col-2 center" *ngIf="selected_Recibo.id == 0">
       <button class="btn btn-success" (click)="crearRecibo()">Crear</button>
@@ -73,9 +73,9 @@
           <th scope="col"  class="text-center" width="100">
             Estado
           </th>
-          <!-- <th scope="col"  class="text-center" width="30">
+           <th scope="col"  class="text-center" width="30">
 
-          </th>
+          </th><!--
           <th scope="col"  class="text-center" width="30">
 
           </th>
@@ -106,12 +106,12 @@
           </td>
           <td *ngIf="Recibo.estado==2" class="text-center eliminar">
           </td>
-          <!-- <td (click)="imprimir(Recibo)" class="text-center imprimir">
-            <fa-icon [icon]="faImprimir"></fa-icon>
-          </td>
-          <td (click)="pagar(Recibo)" class="text-center pagar">
+          <td (click)="pagar(Recibo)" class="text-center pagar" *ngIf="Recibo.estado==1">
             <fa-icon [icon]="faRecibo"></fa-icon>
-          </td>
+          </td><!--
+            <td (click)="imprimir(Recibo)" class="text-center imprimir">
+             <fa-icon [icon]="faImprimir"></fa-icon>
+           </td>
           <td (click)="eliminar(Recibo)" *ngIf="Recibo.estado==1" class="text-center eliminar">
             <fa-icon [icon]="faEliminar"></fa-icon>
           </td> -->

@@ -22,8 +22,8 @@
   </div>
   <div class="col-3 seleccionar">
     <label>Contador:</label>
-    <app-seleccionar #seleccionarContadoresC [estaPorEncima]="true" class="col-10" [objetoTratar]="'contador'"
-      [esBuscableEnBaseDeDatos]="true" [esGetAllAlEmpezar]="true"
+    <app-seleccionar #seleccionarContadoresC [estaPorEncima]="true" class="col-10" [objetoTratar]="'contador'" [flitrarPorUsuario]="usuario"
+      [esBuscableEnBaseDeDatos]="false" [esGetAllAlEmpezar]="true" [objetos]="contadores"
       (OutputObjeto)="addContador($event)"></app-seleccionar>
   </div>
   <div class="col-2 center"></div>

@@ -16,13 +16,13 @@ import { UsuariosControlador } from 'src/app/Controladores/UsuariosControlador';
 })
 export class RecibosListaComponent {
   @ViewChild('seleccionarUsuarioC', { static: false }) seleccionarUsuarioC!: SeleccionarComponent;
-  faEliminar=faTrash;
-  faRecibo=faReceipt;
-  faImprimir=faPrint
-  constructor(private RecibosControlador: RecibosControlador,private empresaControlador: EmpresaControlador,private usuarioControlador:UsuariosControlador){}
-  empresa: string="";
-  selected_Recibo:Recibos={id:0, empresa:1} as Recibos;
-  Recibos:Recibos[]=[];
+  faEliminar = faTrash;
+  faRecibo = faReceipt;
+  faImprimir = faPrint
+  constructor(private RecibosControlador: RecibosControlador, private empresaControlador: EmpresaControlador, private usuarioControlador: UsuariosControlador) { }
+  empresa: string = "";
+  selected_Recibo: Recibos = { id: 0, empresa: 1 } as Recibos;
+  Recibos: Recibos[] = [];
   selectedMonth: number = 1;
   estado: any[] = [
     { value: 1, name: 'Pendiente' },
@@ -38,79 +38,85 @@ export class RecibosListaComponent {
 
   async ngOnInit(): Promise<void> {
     await this.loadRecibos()
-    var emp:Empresa=await this.empresaControlador.getEmpresa()
-    this.empresa=emp.name;
+    var emp: Empresa = await this.empresaControlador.getEmpresa()
+    this.empresa = emp.name;
   }
 
 
-  async openOptionsForm(Recibo:Recibos){
-    if(Recibo.estado==1)this.selected_Recibo=JSON.parse(JSON.stringify(Recibo))
+  async openOptionsForm(Recibo: Recibos) {
+    if (Recibo.estado == 1) this.selected_Recibo = JSON.parse(JSON.stringify(Recibo))
     var usuario = await this.usuarioControlador.getUsuario(Recibo.usuario[0])
     await this.seleccionarUsuarioC.addDesdePadre(usuario)
   }
-  addUsuario(usu:any){
-    this.selected_Recibo.usuario=usu.id
+  addUsuario(usu: any) {
+    this.selected_Recibo.usuario = usu.id
 
   }
   limpiar_datos() {
-    this.selected_Recibo={id:0, empresa:1} as Recibos;
+    this.selected_Recibo = { id: 0, empresa: 1 } as Recibos;
     this.seleccionarUsuarioC.cambiarAEditar()
   }
-  
+
   async loadRecibos() {
-    this.Recibos =await this.RecibosControlador.getRecibos();
-    console.log(this.Recibos)
+    this.Recibos = await this.RecibosControlador.getRecibos();
+    //console.log(this.Recibos)
   }
-  async pagarRecibo(){
-    console.log(this.selected_Recibo)
-    this.selected_Recibo.empresa=1
-    this.selected_Recibo.usuario=this.selected_Recibo.usuario[0]
-    console.log(this.selected_Recibo)
-    if(await this.RecibosControlador.putRecibo(this.selected_Recibo)){
+  async pagarRecibo() {
+    //console.log(this.selected_Recibo)
+    this.selected_Recibo.empresa = 1
+    this.selected_Recibo.usuario = this.selected_Recibo.usuario[0]
+    this.selected_Recibo.estado = "2"
+    //console.log(this.selected_Recibo)
+    if (await this.RecibosControlador.putRecibo(this.selected_Recibo)) {
       swalCalls.llamadaPagado()
     }
-  }
-  async crearRecibo(){
-    if(await this.checkData()){
-    if (this.selected_Recibo.id==0){
-      if(await this.RecibosControlador.postRecibo(this.selected_Recibo)){
-        swalCalls.llamadaCreado()
-      }else{
-        swalCalls.llamadaErrorKeyDuplucado()
-      }
-    }else{
-      this.selected_Recibo.usuario=this.selected_Recibo.usuario[0]
-      this.selected_Recibo.empresa=1
-      console.log(JSON.parse(JSON.stringify(this.selected_Recibo)))
-      if(await this.RecibosControlador.putRecibo(this.selected_Recibo)){
-        swalCalls.llamadaEditado()
-      }
-    }
     await this.loadRecibos()
+    await this.limpiar_datos()
   }
+  async crearRecibo() {
+    if (await this.checkData()) {
+      if (this.selected_Recibo.id == 0) {
+        if (await this.RecibosControlador.postRecibo(this.selected_Recibo)) {
+          swalCalls.llamadaCreado()
+        } else {
+          swalCalls.llamadaErrorKeyDuplucado()
+        }
+      } else {
+        this.selected_Recibo.usuario = this.selected_Recibo.usuario[0]
+        this.selected_Recibo.empresa = 1
+        //console.log(JSON.parse(JSON.stringify(this.selected_Recibo)))
+        if (await this.RecibosControlador.putRecibo(this.selected_Recibo)) {
+          swalCalls.llamadaEditado()
+        }
+      }
+      await this.loadRecibos()
+      await this.limpiar_datos()
+    }
   }
   checkData() {
     return new Promise<Boolean>(async (resolve) => {
       var funciona = true;
       var texto = '';
       var cont = 0;
-      
-      if (this.selected_Recibo.periodo_trimestral==undefined) {
+
+      if (this.selected_Recibo.periodo_trimestral == undefined) {
         texto = "El trimestre"
         cont += 1
         funciona = false
-      }if (this.selected_Recibo.anyo==undefined || this.selected_Recibo.anyo<2000) {
-        if(cont==0){
-          texto = "El año"}else{
-            texto = texto+", el año"
-          }
-          cont += 1
-          funciona = false
+      } if (this.selected_Recibo.anyo == undefined || this.selected_Recibo.anyo < 2000) {
+        if (cont == 0) {
+          texto = "El año"
+        } else {
+          texto = texto + ", el año"
+        }
+        cont += 1
+        funciona = false
       }
-      if (this.selected_Recibo.usuario==undefined) {
-        if(cont==0){
-        texto = "El usuario"}else{
-          texto = texto+", el usuario"
+      if (this.selected_Recibo.usuario == undefined) {
+        if (cont == 0) {
+          texto = "El usuario"
+        } else {
+          texto = texto + ", el usuario"
         }
         cont += 1
         funciona = false
@@ -122,25 +128,27 @@ export class RecibosListaComponent {
           icon: 'error',
           title: 'Error de datos',
           text: texto + ' no estan correctamente o esta vacios',
-      })
+        })
         resolve(funciona);
       } else {
         Swal.fire({
           icon: 'error',
           title: 'Error de datos',
           text: texto + ' no estan correctamente o esta vacios',
-      })
+        })
         resolve(funciona);
       }
     });
   }
-  imprimir(Recibo:Recibos){
+  imprimir(Recibo: Recibos) {
 
   }
-  pagar(Recibo:Recibos){
-
+  pagar(Recibo: Recibos) {
+    this.selected_Recibo=Recibo
+    this.pagarRecibo()
+    
   }
-  eliminar(Recibo:Recibos){
+  eliminar(Recibo: Recibos) {
 
   }
 }

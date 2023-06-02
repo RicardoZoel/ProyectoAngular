@@ -31,18 +31,23 @@ limpiar_datos() {
   if (await this.checkData()) {
 
     if (this.selected_contador.id == 0) {
-      console.log(this.selected_contador)
+      //console.log(this.selected_contador)
       if (await this.contadorControlador.postContador(this.selected_contador)){
       swalCalls.llamadaCreado()
+      }else{
+        swalCalls.llamadaErrorKeyDuplucadoContador()
       }
     } else {
       this.selected_contador.empresa=1
       this.selected_contador.usuario=this.selected_contador.usuario[0]
-      console.log(this.selected_contador)
+      //console.log(this.selected_contador)
       if(await this.contadorControlador.putContador(this.selected_contador)){
-        swalCalls.llamadaEditado()}
+        swalCalls.llamadaEditado()}else{
+          swalCalls.llamadaErrorKeyDuplucadoContador()
+        }
     }
     await this.loadContador()
+    await this.limpiar_datos()
   }
 }
   checkData() {

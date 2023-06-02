@@ -20,13 +20,12 @@ export class ContadorControlador {
           (data: any) => {
          
             if (data['error'] == undefined) {
-              console.log(data['data'])
               resolve(data['data']);
             }
           },
           (error: any) => {
             
-            console.log(error)
+            
           }
         );
     });
@@ -41,13 +40,12 @@ export class ContadorControlador {
             (data: any) => {
            
               if (data['error'] == undefined) {
-                console.log(data['data'])
                 resolve(data['data']);
               }
             },
             (error: any) => {
               
-              console.log(error)
+              
             }
           );
       });
@@ -59,7 +57,6 @@ export class ContadorControlador {
           .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
           .subscribe(
             (data: any) => {
-              console.log(data)
               if (data['error'] == undefined) {
                 
                 resolve(data['data']);
@@ -67,7 +64,7 @@ export class ContadorControlador {
             },
             (error: any) => {
               
-              console.log(error)
+              
             }
           );
       });
@@ -79,16 +76,17 @@ export class ContadorControlador {
         .pipe(timeoutWith(5000, timer(5000).pipe(take(1))))
         .subscribe(
           (data: any) => {
-            console.log(data)
+            //console.log(data)
          
-            if (data['error'] == undefined) {
-              console.log(data)
+            if (data["result"]['error'] == undefined) {
               resolve(true);
+            }else{
+              resolve(false);
             }
           },
           (error: any) => {
             
-            console.log(error)
+            
           }
         );
     });
@@ -101,15 +99,15 @@ export class ContadorControlador {
           .subscribe(
             (data: any) => {
            
-              if (data['error'] == undefined) {
-                console.log(data)
-                console.log(data['data'])
+              if (data["result"]['error'] == undefined) {
                 resolve(true);
+              }else{
+                resolve(false);
               }
             },
             (error: any) => {
               
-              console.log(error)
+              
             }
           );
       });
